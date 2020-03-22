@@ -1,13 +1,13 @@
-#include "TemperatureRelay.h"
+#include "HumidityRelay.h"
 
 #define RELAY_PIN   2
-#define TEMP   78
+#define HUMIDITY   55
 
 /* Normal constructor */
-TemperatureRelay ctr(RELAY_PIN, TEMP);
+HumidityRelay ctr(RELAY_PIN, HUMIDITY);
 
 /* No pin constructor */
-//TemperatureRelay ctr(TEMP);
+//HumidityRelay ctr(HUMIDITY);
 
 void setup() {
     /* Optionally set a name for the object */
@@ -21,16 +21,16 @@ void setup() {
 }
 
 void loop() {
-    float tempF = 77.28;
+    float humidity = 44.62;
 
     /* Signal the timer on each pass of loop() */
-    ctr.process(tempF);
+    ctr.process(humidity);
 
-    /* Factor is +/- of the enactment temp, defaults to 1 */
+    /* Factor is +/- of the enactment humidity, defaults to 1 */
     ctr.factor(3);
     uint8_t factor = factor();
 
-    /* Check the current state of the pin */
+    /* Check the current state of the relay */
     bool state = ctr.state();
 
     /* Check reverse state */
@@ -39,13 +39,13 @@ void loop() {
     /* Get the name of the object */
     char* name = ctr.name();
 
-    /* Get the on or off temp */
-    uint8_t onTemp  = ctr.onTemp();
-    uint8_t offTemp = ctr.offTemp();
+    /* Get the on or off humidity */
+    uint8_t onHum  = ctr.onHum();
+    uint8_t offHum = ctr.offHum();
 
     /* Set the on and off temps */
-    ctr.onTemp(ON_TEMP);
-    ctr.offTemp(OFF_TEMP);
+    ctr.onHum(ON_HUM);
+    ctr.offHum(OFF_HUM);
 
     /* Get/set the relay pin */
     int8_t = ctr.pin();
