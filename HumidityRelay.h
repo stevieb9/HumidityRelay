@@ -18,8 +18,8 @@ class HumidityRelay : public ArduinoRelay {
         uint8_t _factor  = 1;
 
     public:
-        HumidityRelay(int8_t pin, uint8_t hum);
-        HumidityRelay(uint8_t hum);
+        HumidityRelay(int8_t pin, uint8_t humidity);
+        HumidityRelay(uint8_t humidity);
 
         uint8_t onHum () { return _onHum; }
         uint8_t onHum (uint8_t onHum) { _onHum = onHum; return _onHum; }

@@ -3,8 +3,8 @@
 
 HumidityRelay::HumidityRelay (int8_t pin, uint8_t humidity) : ArduinoRelay(pin) {
     if (mode() == MODE_HUMIDIFY) {
-        _onHum = humidify;
-        _offHum = humitidy + factor();
+        _onHum = humidity;
+        _offHum = humidity + factor();
     }
     else if (mode() == MODE_DEHUMIDIFY) {
         _onHum = humidity;
@@ -18,7 +18,7 @@ HumidityRelay::HumidityRelay (uint8_t humidity) : ArduinoRelay() {
         _offHum = humidity + factor();
     }
     else if (mode() == MODE_DEHUMIDIFY) {
-        _onHum = humdity;
+        _onHum = humidity;
         _offHum = humidity - factor();
     }
 }
@@ -61,7 +61,7 @@ void HumidityRelay::process (float humidity) {
 
         // Turn the outlet off
 
-        else if (state() == on() && humidity < (float)offTemp()) {
+        else if (state() == on() && humidity < (float)offHum()) {
             state(off());
             turnOff();
         }
