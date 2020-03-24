@@ -12,6 +12,7 @@ using namespace std;
 class HumidityRelay : public ArduinoRelay {
 
     private:
+        uint8_t _humidity = 0;
         uint8_t _onHum  = 0;
         uint8_t _offHum = 0;
         uint8_t _mode   = true; // true=humidify, false=dehumidify
@@ -21,14 +22,17 @@ class HumidityRelay : public ArduinoRelay {
         HumidityRelay(int8_t pin, uint8_t humidity);
         HumidityRelay(uint8_t humidity);
 
+        uint8_t baseHumidity () { return _humidity; }
+        uint8_t baseHumidity (uint8_t humidity) { _humidity = humidity; return _humidity; }
+
         uint8_t onHum () { return _onHum; }
         uint8_t onHum (uint8_t onHum) { _onHum = onHum; return _onHum; }
 
         uint8_t offHum () { return _offHum; }
         uint8_t offHum (uint8_t offHum) { _offHum = offHum; return _offHum; }
 
-        uint8_t mode () { return _mode; }
-        uint8_t mode (uint8_t mode) { _mode = mode; return _mode; }
+        uint8_t mode ();
+        uint8_t mode (uint8_t mode);
 
         uint8_t factor () { return _factor; }
         uint8_t factor (uint8_t factor) { _factor = factor; return _factor; }
