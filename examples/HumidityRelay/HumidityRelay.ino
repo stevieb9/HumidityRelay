@@ -10,9 +10,6 @@ HumidityRelay ctr(RELAY_PIN, HUMIDITY);
 //HumidityRelay ctr(HUMIDITY);
 
 void setup() {
-    /* Optionally set a name for the object */
-    ctr.name("CTR");
-
     /* Reverse: On = LOW, Off = HIGH */
     //ctr.reverse(true);
 
@@ -36,9 +33,6 @@ void loop() {
     /* Check reverse state */
     bool reversed = ctr.reverse();
     
-    /* Get the name of the object */
-    char* name = ctr.name();
-
     /* Get the on or off humidity */
     uint8_t onHum  = ctr.onHum();
     uint8_t offHum = ctr.offHum();
