@@ -55,10 +55,7 @@ void HumidityRelay::process (float humidity) {
     if (mode() == MODE_HUMIDIFY) {
         // Turn the outlet on
 
-        if (state() == off() && humidity < (float)onHum() || !init()) {
-            if (!init()) {
-                init(true);
-            }
+        if (state() == off() && humidity < (float)onHum()) {
             state(on());
             turnOn();
         }
@@ -74,10 +71,7 @@ void HumidityRelay::process (float humidity) {
     else if (mode() == MODE_DEHUMIDIFY) {
         // Turn the outlet on
 
-        if (state() == off() && humidity > (float)onHum() || !init()) {
-            if (!init()) {
-                init(true);
-            }
+        if (state() == off() && humidity > (float)onHum()) {
             state(on());
             turnOn();
         }
